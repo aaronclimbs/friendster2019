@@ -1,0 +1,25 @@
+{
+  "name": "friendster2019",
+  "version": "1.0.0",
+  "description": "A compatibility-based friend-finder application - basically a dating app. This full stack app will take in data from user surveys and compare answers with those from other users. It will then display then name and picture of the user with the best computed match.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brityank/friendster2019.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brityank/friendster2019/issues"
+  },
+  "homepage": "https://github.com/brityank/friendster2019#readme",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1"
+  }
+}
