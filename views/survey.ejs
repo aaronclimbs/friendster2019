@@ -1,3 +1,185 @@
 <% include partials/header %>
 
+<div class="container">
+  <form action="/friends" method="post">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          placeholder="e.g Alex Smith"
+          name="name"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Avatar (file-upload)</label>
+      <div class="control">
+        <input class="input" type="file" placeholder="e.g. photo.jpg" name="avatar-file"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Avatar (web link)</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="e.g. http://www.photo.jpg" name="avatar-wl" pattern="https?:.+(jpg|png)"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy binging television/movies?</label>
+      <div class="control">
+        <div class="select">
+          <select name="binge">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+      <p class="help">For this question and those below, please consider a 3 as neutral.</p>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy the outdoors?</label>
+      <div class="control">
+        <div class="select">
+          <select name="outdoors">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy trying new foods?</label>
+      <div class="control">
+        <div class="select">
+          <select name="exotic">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy live sports?</label>
+      <div class="control">
+        <div class="select">
+          <select name="livesports">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy cooking?</label>
+      <div class="control">
+        <div class="select">
+          <select name="cooking">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy being physically active/playing sports?</label>
+      <div class="control">
+        <div class="select">
+          <select name="fitness">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy going out to eat?</label>
+      <div class="control">
+        <div class="select">
+          <select name="eatout">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much do you enjoy video games?</label>
+      <div class="control">
+        <div class="select">
+          <select name="gaming">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how clean is your home?</label>
+      <div class="control">
+        <div class="select">
+          <select name="clean">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+      <div class="field">
+      <label class="label">On a scale of 1 - 5, how much sleep do you get?</label>
+      <div class="control">
+        <div class="select">
+          <select name="sleep">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3 selected>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit">Save</button>
+  </form>
+</div>
+
 <% include partials/footer %>
