@@ -2,7 +2,12 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const routes = require("./routes/index")
+const mysql = require("mysql");
 const PORT = process.env.PORT || 3000;
+const morgan = require('morgan')
+
+//logger
+app.use(morgan('tiny'));
 
 // set static folder
 app.use(express.static(path.join(__dirname, "public")));
