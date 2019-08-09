@@ -1,10 +1,28 @@
 <% include partials/header %>
-  <h1 class="title">Your Match!</h1>
+<div class="hero">
+  <div class="hero-body">
+    <div class="has-text-centered">
+      <h1 class="title is-centered">Your Match!</h1>
+    </div>
+  </div>
+</div>
 
-  <h3>
-    <%=match.user_name%>
-  </h3>
-
-  <img src='<%=match.user_pic%>'>
+<div class="hero is-success is-bold">
+  <div class="hero-body">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div class="section">
+          <a href="/"><button class="button is-bordered">Home</button></a>
+        </div>
+        <h3 class="title is-3">
+          <%=match.user_name%>
+        </h3>
+      </div>
+      <div class="column">
+        <img src="<%=match.user_pic%>" width="200" height="300"/>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% include partials/footer %>

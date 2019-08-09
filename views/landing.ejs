@@ -1,7 +1,22 @@
 <% include partials/header %>
-  <h1 class="title">Welcome to Friendster 2019!</h1>
+<div class="hero">
+  <div class="hero-body">
+    <h1 class="title">Welcome to Friendster 2019!</h1>
+    <p class="subtitle">Find your new friend!</p>
+  </div>
+</hero-body>
+<div class="container">
 
-  <a href="/friends/new" class="">Survey</a>
-  <a href="/api/friends" class="">API: View All Friends (JSON)</a>
+    <div class="columns">
+      <div class="column">
+        <button class="button is-primary"><a href="/api/friends">View All Users</a></button>
+      </div>
+      <div class="column">
+        <button class="button is-primary"><a href="/friends/new">Survey</a></button>
+      </div>
+    </div>
+
+  <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="landscape">
+</div>
 
 <% include partials/footer %>
