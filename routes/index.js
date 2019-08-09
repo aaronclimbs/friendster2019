@@ -5,7 +5,7 @@ const mysql = require("mysql");
 let percentage = null;
 // api routes
 router.get("/api/friends", (req, res) => {
-  const db = mysql.createConnection(process.env.JAWSDB_URL);
+  const db = mysql.createConnection(process.env.JAWSDB_MARIA_COPPER_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
@@ -21,7 +21,7 @@ router.get("/api/friends", (req, res) => {
 });
 
 router.post("/friends", (req, res) => {
-  const db = mysql.createConnection(process.env.JAWSDB_URL);
+  const db = mysql.createConnection(process.env.JAWSDB_MARIA_COPPER_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
@@ -113,7 +113,7 @@ router.get("/friends/new", (req, res) => {
 
 router.get("/friends/:id", (req, res) => {
   const friend = req.params.id;
-  const db = mysql.createConnection(process.env.JAWSDB_URL);
+  const db = mysql.createConnection(process.env.JAWSDB_MARIA_COPPER_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
