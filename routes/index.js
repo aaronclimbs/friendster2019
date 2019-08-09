@@ -1,8 +1,8 @@
-const dotenv = require("dotenv");
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 let percentage = null;
+require("dotenv").config();
 // api routes
 router.get("/api/friends", (req, res) => {
   const db = mysql.createConnection(process.env.JAWSDB_MARIA_COPPER_URL);
