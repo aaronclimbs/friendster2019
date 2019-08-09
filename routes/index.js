@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
+let percentage = null;
 // api routes
 router.get("/api/friends", (req, res) => {
   const db = mysql.createConnection({
@@ -20,7 +21,7 @@ router.get("/api/friends", (req, res) => {
       throw new Error(`Error: ${err.message}
     ${err.stack}`);
     db.end();
-    res.json(data);
+    res.send(data);
   });
 });
 
@@ -98,6 +99,7 @@ router.post("/friends", (req, res) => {
         // sort by score so that most alike is at the top
       })
       .map(person => {
+        percentage = (person.alike / data.length * 100).toPrecision(4);
         return {
           name: person.name,
           alike: ((person.alike / data.length) * 100).toPrecision(4)
@@ -107,7 +109,7 @@ router.post("/friends", (req, res) => {
         return b.alike - a.alike;
       });
     db.end();
-    res.render("friend", {match: sortedAlike[0]});
+    res.redirect(`/friends/${sortedAlike[0].id}`);
   });
 });
 
@@ -120,38 +122,38 @@ router.get("/friends/new", (req, res) => {
   res.render("survey", { pageTitle: "Survey Page" });
 });
 
-// router.get("/friends/:id", (req, res) => {
-//   const friend = req.params.id;
-//   const db = mysql.createConnection({
-//     host: "localhost",
-//     port: 3306,
-//     user: "root",
-//     password: "password",
-//     database: "friendsterDB"
-//   });
+router.get("/friends/:id", (req, res) => {
+  const friend = req.params.id;
+  const db = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "password",
+    database: "friendsterDB"
+  });
 
-//   db.connect(err => {
-//     if (err) throw new Error(`Error: ${err.message}`);
-//     console.log(`Connected to database. Status: ${db.state}`);
-//   });
+  db.connect(err => {
+    if (err) throw new Error(`Error: ${err.message}`);
+    console.log(`Connected to database. Status: ${db.state}`);
+  });
 
-//   db.query(
-//     "SELECT * FROM friends WHERE ?",
-//     { user_id: friend },
-//     (err, data) => {
-//       const friend = data[0];
-//       if (err || !data.length) {
-//         //if no data or error log error page
-//         res.render("error", { pageTitle: "Not Found" });
-//         db.end();
-//       } else {
-//         // otherwise render page of match
-//         res.render("friend", { match: friend, pageTitle: "Match" });
-//         db.end();
-//       }
-//     }
-//   );
-// });
+  db.query(
+    "SELECT * FROM friends WHERE ?",
+    { user_id: friend },
+    (err, data) => {
+      const friend = data[0];
+      if (err || !data.length) {
+        //if no data or error log error page
+        res.render("error", { pageTitle: "Not Found" });
+        db.end();
+      } else {
+        // otherwise render page of match
+        res.render("friend", { match: friend, pageTitle: "Match" });
+        db.end();
+      }
+    }
+  );
+});
 
 // error
 router.get("*", (req, res) => {
