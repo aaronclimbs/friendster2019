@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
-let percentage = null;
+// let percentage = null;
 require("dotenv").config();
 // api routes
 router.get("/api/friends", (req, res) => {
@@ -88,8 +88,9 @@ router.post("/friends", (req, res) => {
         // sort by score so that most alike is at the top
       })
       .map(person => {
-        percentage = ((person.alike / data.length) * 100).toPrecision(4);
+        // percentage = ((person.alike / data.length) * 100).toPrecision(4);
         return {
+          id: person.id,
           name: person.name,
           alike: ((person.alike / data.length) * 100).toPrecision(4)
         };
@@ -112,7 +113,6 @@ router.get("/friends/new", (req, res) => {
 });
 
 router.get("/friends/:id", (req, res) => {
-  const friend = req.params.id;
   const db = mysql.createConnection(process.env.JAWSDB_MARIA_COPPER_URL);
 
   db.connect(err => {
@@ -122,7 +122,7 @@ router.get("/friends/:id", (req, res) => {
 
   db.query(
     "SELECT * FROM friends WHERE ?",
-    { user_id: friend },
+    { user_id: req.params.id },
     (err, data) => {
       const friend = data[0];
       if (err || !data.length) {
