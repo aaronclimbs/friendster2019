@@ -1,16 +1,11 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const router = express.Router();
 const mysql = require("mysql");
 let percentage = null;
 // api routes
 router.get("/api/friends", (req, res) => {
-  const db = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "friendsterDB"
-  });
+  const db = mysql.createConnection(process.env.JAWSDB_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
@@ -26,13 +21,7 @@ router.get("/api/friends", (req, res) => {
 });
 
 router.post("/friends", (req, res) => {
-  const db = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "friendsterDB"
-  });
+  const db = mysql.createConnection(process.env.JAWSDB_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
@@ -99,7 +88,7 @@ router.post("/friends", (req, res) => {
         // sort by score so that most alike is at the top
       })
       .map(person => {
-        percentage = (person.alike / data.length * 100).toPrecision(4);
+        percentage = ((person.alike / data.length) * 100).toPrecision(4);
         return {
           name: person.name,
           alike: ((person.alike / data.length) * 100).toPrecision(4)
@@ -124,13 +113,7 @@ router.get("/friends/new", (req, res) => {
 
 router.get("/friends/:id", (req, res) => {
   const friend = req.params.id;
-  const db = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "friendsterDB"
-  });
+  const db = mysql.createConnection(process.env.JAWSDB_URL);
 
   db.connect(err => {
     if (err) throw new Error(`Error: ${err.message}`);
