@@ -42,9 +42,7 @@ router.post("/friends", (req, res) => {
   const friend = [
     [
       req.body.name,
-      req.body["avatar-file"].length > 0
-        ? req.body["avatar-file"]
-        : req.body["avatar-wl"],
+      req.body["avatar-wl"],
       answers
     ]
   ];
